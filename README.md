@@ -61,7 +61,7 @@ Before we mitigated bias, the specificity metrics for both `copy` and `command` 
     <td><img src="imgs/Figure 2c.png" alt="resulta", width="426"></td>
     <td><img src="imgs/Figure 2d.png" alt="resulta", width="440"></td>
   </tr>
-  <caption style="caption-side:bottom">Figure 2. Effect of bias mitigation in classifying cognitive impairment by thresholding MMSE and ATT, in people with lower education (less than 8 years) versus those with higher education (greater than or equal to 8 years)</caption>
+  <caption style="caption-side:bottom">Figure 2. Effect of bias mitigation in classifying cognitive impairment by thresholding MMSE and ATT-C, in people with lower education (less than 8 years) versus those with higher education (greater than or equal to 8 years)</caption>
 </table>
 
 ## Citation
