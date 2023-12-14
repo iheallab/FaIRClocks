@@ -45,9 +45,18 @@ sh run.sh
 Before we mitigated the bias, the specificity are all 0 in both `copy` and `command` conditions, as shown in Figure 2 in orange, which means that the model tended to predict any low-educated individuals as cognitively impaired. Blue plots shows the results after mitigation
 
 <div align="center">
-  <img src="imgs/Figure 2a.png" alt="main", width="426">
-  <img src="imgs/Figure 2b.png" alt="main", width="450">
+  
+  
   <figcaption>Figure 2. Effect of bias mitigation in classifying cognitive impairment by thresholding MMSE, in people with lower education (less than 8 years) versus those with higher education (greater than or equal to 8 years)</figcaption>
+</div>
+
+<div class="row">
+  <div class="column">
+    <img src="imgs/Figure 2a.png" alt="main", width="426">
+  </div>
+  <div class="column">
+    <img src="imgs/Figure 2b.png" alt="main", width="450">
+  </div>
 </div>
 
 ## Citation
