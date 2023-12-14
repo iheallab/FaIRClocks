@@ -18,8 +18,9 @@ Our findings revealed that standard unweighted classifiers erroneously conflated
 
 Please also check our previous works exploring the usage of deep learning in the clock drawing test on cognitive outcomes prediction:
 
-2022, [Explainable semi-supervised deep learning shows that dementia is associated with small, avocado-shaped clocks with irregularly placed hands](https://www.nature.com/articles/s41598-023-34518-9)
-2023, [Variational autoencoder provides proof of concept that compressing CDT to extremely low-dimensional space retains its ability of distinguishing dementia](https://www.nature.com/articles/s41598-022-12024-8)
+- 2022, [Explainable semi-supervised deep learning shows that dementia is associated with small, avocado-shaped clocks with irregularly placed hands](https://www.nature.com/articles/s41598-023-34518-9)
+
+- 2023, [Variational autoencoder provides proof of concept that compressing CDT to extremely low-dimensional space retains its ability of distinguishing dementia](https://www.nature.com/articles/s41598-022-12024-8)
 
 ## Run
 
