@@ -43,14 +43,11 @@ def generate_data(files, clocks, data_df, target):
             data.append(combined_data)
     return pd.DataFrame(np.array(data), columns=col_names)
 
-def load_clinical_data(path_target, path_adi, target, data_condition):
-    """
-    
-    Parameters:
-    
-    Returns:
-    Dataframe
-    """
+def load_clinical_data(args, data_file):
+    path_target = os.path.join(args.data_root, data_file)
+    path_adi = os.path.join(args.data_root, "data_aif360_adi.csv")
+    target = args.data
+    data_condition = args.data_condition
 
     target = target_map[target]
 
@@ -71,8 +68,8 @@ def load_clinical_data(path_target, path_adi, target, data_condition):
 
     task = data_condition
 
-    files = np.load(f"./data/files_PRECEDE_preop_{task}_v2.npy")
-    clocks = np.load(f"./data/x_PRECEDE_preop_{task}_v2.npy")
+    files = np.load(os.path.join(args.data_root, f"files_PRECEDE_preop_{task}_v2.npy"))
+    clocks = np.load(os.path.join(args.data_root, f"x_PRECEDE_preop_{task}_v2.npy"))
 
     df_train = generate_data(files, clocks, train_data, target)
     df_test = generate_data(files, clocks, test_data, target)

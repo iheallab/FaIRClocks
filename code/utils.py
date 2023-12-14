@@ -81,31 +81,6 @@ def encoding(model, X_train_data, y_train_data, X_test_data, y_test_data, batch_
     print("Test: ", X_test_data_bylo.shape)
     return X_train_data_bylo, X_test_data_bylo
 
-# def test_classifier(model_type, X_test_data_bylo_scaled, y_test_data, best_clf):
-#     print("test shape: ", X_test_data_bylo_scaled.shape)
-#     test_acc = best_clf.score(X_test_data_bylo_scaled, y_test_data)
-#     output = best_clf.predict(X_test_data_bylo_scaled)
-#     if model_type == 'Xgb':
-#         prob = best_clf.predict_proba(X_test_data_bylo_scaled)[:,1]
-#     else:
-#         prob = best_clf.decision_function(X_test_data_bylo_scaled)
-#     cm = confusion_matrix(y_test_data, output)
-#     print(cm)
-#     try:
-#         tn, fp, fn, tp = confusion_matrix(y_test_data, output).ravel()
-#         specificity = tn/(tn+fp)
-#         sensitivity = tp/(tp+fn)
-#         f1 = f1_score(y_test_data, output)
-#         ras = roc_auc_score(y_test_data, prob)
-#         aps = average_precision_score(y_test_data, prob)
-#         print("Accuracy = {:.4}\nROC AUC score = {:.4}\nf1 score = {:.4}\nsensitivity = {:.4}\nspecificity = {:.4}\naverage precision score = {:.4}".format(test_acc, ras, f1, sensitivity, specificity, aps))
-#         return {'Acc': test_acc, 'ROC_AUC': ras, 'F1': f1, 'sensitivity': sensitivity, 'specificity': specificity, 'APS':aps}
-#     except:
-#         f1 = f1_score(y_test_data, output)
-#         aps = average_precision_score(y_test_data, prob)
-#         print("Accuracy = {:.4}\nf1 score = {:.4}\naverage precision score = {:.4}".format(test_acc, f1, aps))
-#         return {'Acc': test_acc, 'F1': f1, 'APS':aps}
-
 def test_classifier_bootstrap(X_test_data_bylo_scaled, y_test_data, best_clf):
     np.random.seed(42)
     def calculate_ci(m):
@@ -293,9 +268,10 @@ class Clocks_Dataset_encoder(Dataset):  #Clock dataset
         return sample
     
 def statistic_data(df, target):
-    print('数量', df['studyid'].nunique())
-    print('年龄', df['age'].mean(), df['age'].std())
-    print(df['Edu_Years'].mean(), df['Edu_Years'].std())
-    print((df['sex'] == 'F').mean() * 100)
-    print((df['Race'] == 'WHITE').mean() * 100)
+    print('Number of patients: ', df['studyid'].nunique())
+    print('Age (mean & std): ', df['age'].mean(), df['age'].std())
+    print('Years of edu (mean & std): ', df['Edu_Years'].mean(), df['Edu_Years'].std())
+    print('Percentage of female patients: ', (df['sex'] == 'F').mean() * 100)
+    print('Percentage of white patients: ', (df['Race'] == 'WHITE').mean() * 100)
     print(df[target].mean())
+
