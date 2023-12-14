@@ -16,7 +16,7 @@ This repository presents the "FaIRClocks" model, a novel approach from our study
 
 Our findings revealed that standard unweighted classifiers erroneously conflated lower education with cognitive impairment, leading to a significant type I error rate in this demographic. To mitigate this, we introduced multiple fairness metrics, effectively balancing performance across varying education levels. The result is a robust model capable of accurately identifying attention and memory deficits in individuals, irrespective of their education background.
 
-Please also check our previous works exploring the usage of deep learning in the clock drawing test on cognitive outcomes prediction:
+Please also check our previous works exploring the application of deep learning techniques in the clock drawing test for cognitive outcomes prediction:
 
 - 2022, [Explainable semi-supervised deep learning shows that dementia is associated with small, avocado-shaped clocks with irregularly placed hands](https://www.nature.com/articles/s41598-023-34518-9)
 
@@ -25,6 +25,8 @@ Please also check our previous works exploring the usage of deep learning in the
 ## Run
 
 **Preparation**
+
+Request the dataset (please find more information in `data/README.md`) and save the data under `data/`.
 
 ```shell
 pip install -r requirements.txt
@@ -48,14 +50,18 @@ sh run.sh
 ## Results
 
 
-Before we mitigated the bias, the specificity are all 0 in both `copy` and `command` conditions, as shown in Figure 2 in orange, which means that the model tended to predict any low-educated individuals as cognitively impaired. Blue plots shows the results after mitigation
+Before we mitigated bias, the specificity metrics for both `copy` and `command` conditions were $0$, as shown in orange in Figure 2. This indicated a tendency of the model to inaccurately categorize patients with lower education levels as cognitively impaired. The blue plots in the figure represent the outcomes following bias mitigation. After bias mitigation, we not only enhanced the specificity for the low-educated group but also preserved the performance levels for the high-educated group.
 
 <table>
   <tr>
     <td><img src="imgs/Figure 2a.png" alt="resulta", width="426"></td>
     <td><img src="imgs/Figure 2a.png" alt="resulta", width="426"></td>
   </tr>
-  <caption style="caption-side:bottom">Figure 2. Effect of bias mitigation in classifying cognitive impairment by thresholding MMSE, in people with lower education (less than 8 years) versus those with higher education (greater than or equal to 8 years)</caption>
+  <tr>
+    <td><img src="imgs/Figure 2c.png" alt="resulta", width="426"></td>
+    <td><img src="imgs/Figure 2d.png" alt="resulta", width="440"></td>
+  </tr>
+  <caption style="caption-side:bottom">Figure 2. Effect of bias mitigation in classifying cognitive impairment by thresholding MMSE and ATT, in people with lower education (less than 8 years) versus those with higher education (greater than or equal to 8 years)</caption>
 </table>
 
 ## Citation
