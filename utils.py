@@ -8,7 +8,8 @@ from itertools import cycle
 from tqdm import tqdm
 
 import torch
-
+from torch.utils.data import Dataset, DataLoader
+from torchvision.transforms import transforms
 
 from sklearn.metrics import confusion_matrix, roc_auc_score, f1_score, average_precision_score,precision_score
 
@@ -25,8 +26,7 @@ def set_seeds(my_seed=42):
     torch.cuda.manual_seed_all(my_seed)
     os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
 
-from dataset import createDatasets
-from model import loadEncoder, NeuralNetwork, NeuralNetworkDemographics
+from model import loadEncoder
 
 def reparametrize(mu, logvar):
     std = logvar.mul(0.5).exp_()
@@ -67,7 +67,7 @@ def encoding(model, X_train_data, y_train_data, X_test_data, y_test_data, batch_
     print("Train: ", X_train_data_bylo.shape)
 
     feature_vector = np.empty((batch_size, 10))
-    for x,y in tqdm(test_loader):
+    for x, y in tqdm(test_loader):
         x = x.cuda()
         with torch.no_grad():
             f = Encoder(x)

@@ -3,6 +3,13 @@ import torch
 import copy
 import torch.nn.init as init
 
+from sklearn.svm import SVC
+from sklearn.model_selection import GridSearchCV
+from sklearn.linear_model import LogisticRegression
+from sklearn.utils.class_weight import compute_sample_weight
+
+from xgboost import XGBClassifier
+
 class RF_VAE2(nn.Module):
     """Encoder and Decoder architecture for 3D Shapes, Celeba, Chairs data.
         Taken entirely from github.com/ThomasMrY/RF-VAE"""
@@ -167,3 +174,31 @@ class NeuralNetworkDemographics(nn.Module):
         logits = self.fully_connected(final)
         return logits
 
+def fit_model(model, X, y, sample_weight):
+    if model == "LR":
+        parameters = {'C':[1, 10, 100, 1000], 'solver':['liblinear', 'lbfgs', 'saga']}
+        clf = LogisticRegression(class_weight='balanced', random_state=29)
+        clf = GridSearchCV(clf, parameters, n_jobs=4, scoring='roc_auc')
+
+        clf.fit(X, y, sample_weight=sample_weight)
+        best_clf = clf.best_estimator_
+    elif model == "SVM":
+        parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10, 100, 1000]}
+        clf = SVC(probability=True, class_weight="balanced", random_state=42)
+        clf = GridSearchCV(clf, parameters, n_jobs=4, scoring='roc_auc')
+
+        clf.fit(X, y, sample_weight=sample_weight)
+        best_clf = clf.best_estimator_
+    elif model == "XGB":
+        parameters = {'learning_rate':[0.005, 0.05, 0.1, 0.5], 'loss':['log_loss']}
+        xgc = XGBClassifier()
+        clf = GridSearchCV(xgc, parameters, n_jobs=4, scoring='roc_auc')
+
+        clf.fit(X, y, sample_weight=(compute_sample_weight("balanced", y)))
+        best_clf = clf.best_estimator_
+    else:
+        raise Exception("This model is not available.")
+    
+    print(f"The best {model} parameter is: {clf.best_params_}")
+    
+    return best_clf
