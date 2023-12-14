@@ -1,7 +1,7 @@
 # FaIRClocks
 
 <div align="center">
-  <img src="imgs/Figure 4.png" alt="main">
+  <img src="imgs/Figure 1.png" alt="main">
   <figcaption>Figure 1. The overall conceptual flowchart of FaIRClocks</figcaption>
 </div>
 
