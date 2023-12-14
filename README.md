@@ -12,9 +12,14 @@
 
 ## Introduction
 
-This repository presents the "FaIRClocks" model, a novel approach from our study focusing on the fair and interpretable assessment of cognitive abilities using clock drawing tests (CDT). Leveraging the Relevance Factor Variational Autoencoder (RF-VAE) network, FaIRClocks analyzes clock drawings to predict cognitive scores, including the Mini-Mental State Examination (MMSE) total score, attention composite z-score (ATT-C), and memory composite z-score (MEM-C). 
+This repository presents the "FaIRClocks" model, a novel approach from our study focusing on the fair and interpretable assessment of cognitive abilities using clock drawing tests (CDT). Leveraging the [Relevance Factor Variational Autoencoder (RF-VAE) network](https://arxiv.org/abs/1902.01568), FaIRClocks analyzes clock drawings to predict cognitive scores, including the Mini-Mental State Examination (MMSE) total score, attention composite z-score (ATT-C), and memory composite z-score (MEM-C). 
 
 Our findings revealed that standard unweighted classifiers erroneously conflated lower education with cognitive impairment, leading to a significant type I error rate in this demographic. To mitigate this, we introduced multiple fairness metrics, effectively balancing performance across varying education levels. The result is a robust model capable of accurately identifying attention and memory deficits in individuals, irrespective of their education background.
+
+Please also check our previous works exploring the usage of deep learning in the clock drawing test on cognitive outcomes prediction:
+
+2022, [Explainable semi-supervised deep learning shows that dementia is associated with small, avocado-shaped clocks with irregularly placed hands](https://www.nature.com/articles/s41598-023-34518-9)
+2023, [Variational autoencoder provides proof of concept that compressing CDT to extremely low-dimensional space retains its ability of distinguishing dementia](https://www.nature.com/articles/s41598-022-12024-8)
 
 ## Run
 
